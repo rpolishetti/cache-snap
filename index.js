@@ -28,7 +28,7 @@ app.get("/photos", async (req, res) => {
     cachedPhotos = await redisClient.get("photos");
   }
   
-  if (cachedPhotos.length) {
+  if (cachedPhotos && cachedPhotos.length) {
     console.log("cache hit");
     const photos = JSON.parse(cachedPhotos);
     res.send(photos);
